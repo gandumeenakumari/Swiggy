@@ -49,8 +49,19 @@ Last Name should start with Alphabet
         <div class="col mb-3">
         <label for="mobile" class="form-label">Mobile Number</label>
         <input type="text" class="form-control" id="mobile" formControlName="mobile">
+        <div class="form-text text-danger" *ngIf="Mobile.errors?.['required']&&(Mobile.dirty||Mobile.touched)">
+            Number is required
+        </div>
+        <div class="form-text text-danger" *ngIf="Mobile.errors?.['pattern']&&(Mobile.dirty||Mobile.touched)">
+            Number is Invalid
+        </div>
+        <div class="form-text text-danger" *ngIf="Mobile.errors?.['minlength']&&(Mobile.dirty||Mobile.touched)">
+            Number is short
+        </div>
+        <div class="form-text text-danger" *ngIf="Mobile.errors?.['maxlength']&&(Mobile.dirty||Mobile.touched)">
+            Number is long
+        </div>
         
-        <div class="form-text"></div>
         </div>
     <div class="col ps-3 mb-3">
         <div class="m-1">Gender</div>
@@ -63,6 +74,10 @@ Last Name should start with Alphabet
             <input type="radio" class="form-check-input" value="f" id="female" formControlName="gender">
             <label class="form-check-label" for="female">Female</label>  
         </div>
+        <div class="form-text text-danger" *ngIf="Gender.errors?.['required']">
+            Select Gender
+        </div>
+    
     </div>
 </div>
 </div>
@@ -70,19 +85,28 @@ Last Name should start with Alphabet
     <div class="col">
         <label for="pwd" class="form-label">Password</label>
         <input type="password" class="form-control" id="pwd" formControlName="pwd">
-        
-        <div class="form-text"></div>
+        <div class="form-text text-danger" *ngIf="Pwd.errors?.['required'] && (Pwd.dirty||Pwd.touched)">
+            Password is Required
+        </div>
+        <div class="form-text text-danger" *ngIf="Pwd.errors?.['minlength'] && (Pwd.dirty||Pwd.touched)">
+            min length should be 6 characters
+        </div>
+        <div class="form-text text-danger" *ngIf="Pwd.errors?.['maxlength'] && (Pwd.dirty||Pwd.touched)">
+            max length is 15 characters 
+        </div>
     </div>
     <div class="col mb-3">
         <label for="rpwd" class="form-label">Repeat Password</label>
         <input type="password" class="form-control" id="rpwd" formControlName="rpwd">
-        <div class="form-text"></div>
+    <div class="form-text text-danger"[ngStyle]="{'display':repeatpass}">
+        Repeat password is Invalid
+    </div>
     </div>
 </div>
 <div class="row">
             <div class="col-6 offset-3">
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
