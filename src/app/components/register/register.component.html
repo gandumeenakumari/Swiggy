@@ -15,7 +15,10 @@
             ['minlength']&&(FirstName.touched|| FirstName.dirty)">
             First Name is too Short
         </div>
-        
+    <div class="form-text text-danger" *ngIf="FirstName.errors?.
+    ['pattern']&&(FirstName.dirty||FirstName.touched)">
+    First Name should start with Alphabet
+    </div>
         </div>
         <div class="col mb-3">
         <label for="lastname" class="form-label">Last Name</label>
