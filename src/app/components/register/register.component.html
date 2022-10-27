@@ -8,9 +8,13 @@
         <div class="col">
             <label for="firstname" class="form-label">First Name</label>
             <input type ="text" class="form-control" id="firstname" formControlName="firstname">
-            <div class="form-text text-danger">
+            <div class="form-text text-danger" *ngIf="FirstName.errors?.['required']&&(FirstName.touched||FirstName.dirty)">
                 First Name is Required
             </div>
+            <div class="form-text text-danger" *ngIf="FirstName.errors?.
+            ['minlength']&&(FirstName.touched|| FirstName.dirty)">
+            First Name is too Short
+        </div>
         
         </div>
         <div class="col mb-3">

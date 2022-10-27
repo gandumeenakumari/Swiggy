@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 registerForm=new FormGroup({
-firstname:new FormControl("",[Validators.required]),
+firstname:new FormControl("",[Validators.required,Validators.minLength(2),Validators.pattern("[a-zA-Z].*")]),
 lastname:new FormControl(""),
 email:new FormControl(""),
 mobile:new FormControl(""),
@@ -26,6 +26,24 @@ rpwd:new FormControl("")
 );
 
 registerSubmitted(){
-  console.log(this.registerForm.value);
+  console.log(this.registerForm.get("firstname"));
+}
+get FirstName():FormControl{
+  return this.registerForm.get("firstname") as FormControl;
+}
+get LatName():FormControl{
+  return this.registerForm.get("lastname") as FormControl;
+}
+get Email():FormControl{
+  return this.registerForm.get("email") as FormControl;
+}
+get Mobile():FormControl{
+  return this.registerForm.get("mobile") as FormControl;
+}
+get Gender():FormControl{
+  return this.registerForm.get("gender") as FormControl;
+}
+get Pwd():FormControl{
+  return this.registerForm.get("pwd") as FormControl;
 }
 }
