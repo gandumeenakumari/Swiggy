@@ -1,8 +1,9 @@
 export interface Products
 {
     ProductId:number;
-    Name:string;
+    ProductName:string;
     Category:string;
+    Quantity:number;
     Price:number;
-    Description:string;
+    
 }

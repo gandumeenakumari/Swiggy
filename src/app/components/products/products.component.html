@@ -1,30 +1,8 @@
-<h2>WORKS</h2>
-<div class="container my-5">
-    <h1 class="mb-3">Products</h1>
-    <table class="table" >
-        <thead>
-            <tr>
-            <th>ProductId</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Description</th>
-
-            <th></th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let Products of Products">
-                <td>{{Products.ProductId}}</td>
-                <td>{{Products.Name}}</td>
-                <td>{{Products.Category}}</td>
-                <td>{{Products.Price}}</td>
-                <td>{{Products.Description}}</td>
-                
-                
-            </tr>
-        </tbody>
-    </table>
-    <p *ngIf="!Products || Products.length<=0">No Products found</p>
+<h4>{{title}}</h4>
+<div *ngFor="let Product of Products">
+                <span>{{Product.ProductId}}</span>
+                <span>{{Product.ProductName}}</span>
+                <span>{{Product.Category}}</span>
+                <span>{{Product.Quantity}}</span>
+                <span>{{Product.Price}}</span>   
 </div>
